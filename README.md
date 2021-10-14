@@ -4,12 +4,21 @@ Commands that I find useful
 ## Running Homeassistant in KVM on a Intel Nuc
 - Via bios, enable autoboot if system power fails
 - Install kvm
+- Follow some guide to install HomeAssistant in KVM. This setting assumes the domain/machine is named **homeassistant**
 
 `virsh list --all`
 
 `virsh start homeassistant`
 
 ### Auto start KVM-machine on boot
+
+Create a script `autostartmyvm.sh` and put it in the VM folder.
+```
+#autostartmyvm.sh
+#!/bin/bash
+sleep 60 && virsh start homeassistant
+```
+
 
 put a file named startmyvm.service inside /etc/systemd/system
 ```
